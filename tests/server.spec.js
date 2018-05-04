@@ -37,4 +37,14 @@ describe('server/app.js', function() {
       done();
     });
   });
+
+  it('h2 says Circle CI Test', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        expect(err).not.exist;
+        expect(JSON.stringify(res.text)).to.contain('Circle CI Test');
+        done();
+      });
+    });
 })
